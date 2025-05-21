@@ -35,7 +35,9 @@ const RequestsTable = ({ requests }: IRequestsTable) => {
               >
                 {request.id}
               </th>
-              <td className="px-6 py-4">{request.createdAt.toDateString()}</td>
+              <td className="px-6 py-4">
+                {new Date(request.createdAt).toLocaleDateString()}
+              </td>
               <td className="px-6 py-4">{request.client}</td>
               <td className="px-6 py-4">{request.product}</td>
               <td className="px-6 py-4">{request.status}</td>
