@@ -23,3 +23,7 @@ Execute os seguintes comandos na raiz do projeto clonado:
 ```
 
 O projeto será inicializado em http://localhost:3000/.
+
+## Demonstração
+
+![Gif de demonstração](https://github.com/gioliveirass/fe-poc/blob/main/demo.gif)
