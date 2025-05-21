@@ -37,9 +37,9 @@ const RequestsTable = ({ requests }: IRequestsTable) => {
               </th>
               <td className="px-6 py-4">{request.createdAt.toDateString()}</td>
               <td className="px-6 py-4">{request.client}</td>
-              <td className="px-6 py-4">${request.product}</td>
-              <td className="px-6 py-4">${request.status}</td>
-              <td className="px-6 py-4">${request.value}</td>
+              <td className="px-6 py-4">{request.product}</td>
+              <td className="px-6 py-4">{request.status}</td>
+              <td className="px-6 py-4">{request.value}</td>
             </tr>
           ))}
         </tbody>

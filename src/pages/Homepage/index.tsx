@@ -1,6 +1,7 @@
 import IRequests from "../../interfaces/requests.interface";
-import React, { useState } from "react";
 import RequestsTable from "../../components/RequestsTable";
+import Button from "../../components/Button";
+import React, { useState } from "react";
 
 const Homepage = () => {
   const [requests, setRequests] = useState<IRequests[]>([
@@ -14,7 +15,12 @@ const Homepage = () => {
     },
   ]);
 
-  return <RequestsTable requests={requests} />;
+  return (
+    <div className="flex flex-col gap-8">
+      <RequestsTable requests={requests} />
+      <Button label="Cadastrar pedido" type="light" />
+    </div>
+  );
 };
 
 export default Homepage;
