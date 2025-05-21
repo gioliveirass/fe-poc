@@ -113,7 +113,7 @@ const DetailRequest = () => {
       <div className="flex justify-center gap-4">
         <Button
           label="Voltar"
-          styleType="light"
+          styleType="default"
           onClick={() => {
             navigateTo(IRouter.HOMEPAGE);
           }}

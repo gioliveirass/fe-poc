@@ -122,8 +122,8 @@ const CreateRequest = () => {
 
       <div className="flex justify-center gap-4">
         <Button
-          label="Cancelar"
-          styleType="red"
+          label="Voltar"
+          styleType="dark"
           onClick={() => {
             navigateTo(IRouter.HOMEPAGE);
           }}

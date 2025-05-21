@@ -29,7 +29,7 @@ const Homepage = () => {
       <RequestsTable requests={requests} />
       <Button
         label="Cadastrar pedido"
-        styleType="light"
+        styleType="default"
         onClick={() => {
           navigateTo(IRouter.CREATE);
         }}
