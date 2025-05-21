@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router";
 import CreateRequest from "./pages/CreateRequest";
 
 export enum ERouter {
+  HOMEPAGE = "/",
   CREATE = "/create",
 }
 

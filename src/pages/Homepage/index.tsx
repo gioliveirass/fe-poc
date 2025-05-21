@@ -8,6 +8,10 @@ import { ERouter } from "../../router";
 const Homepage = () => {
   const navigate = useNavigate();
 
+  const navigateTo = (route: ERouter): void => {
+    navigate(route);
+  };
+
   const [requests, setRequests] = useState<IRequests[]>([
     {
       client: "Exemplo",
@@ -19,16 +23,12 @@ const Homepage = () => {
     },
   ]);
 
-  const navigateTo = (route: ERouter): void => {
-    navigate(route);
-  };
-
   return (
     <div className="flex flex-col gap-8">
       <RequestsTable requests={requests} />
       <Button
         label="Cadastrar pedido"
-        type="light"
+        styleType="light"
         onClick={() => {
           navigateTo(ERouter.CREATE);
         }}
