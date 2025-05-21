@@ -4,7 +4,7 @@ import Homepage from "./pages/Homepage";
 import { createBrowserRouter } from "react-router";
 import CreateRequest from "./pages/CreateRequest";
 
-export enum ERouter {
+export enum IRouter {
   HOMEPAGE = "/",
   CREATE = "/create",
 }
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     Component: MainLayout,
     children: [
       { index: true, Component: Homepage },
-      { path: ERouter.CREATE, Component: CreateRequest },
+      { path: IRouter.CREATE, Component: CreateRequest },
     ],
   },
 ]);

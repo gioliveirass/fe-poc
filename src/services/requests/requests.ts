@@ -3,15 +3,35 @@ import IRequests from "../../interfaces/requests.interface";
 
 export enum RequestsEndpoints {
   LIST = "/Orders",
+  CREATE = "/Orders",
 }
 
 class Requests {
   async list() {
-    const response = await axiosInstance.get<IRequests[]>(
-      RequestsEndpoints.LIST
-    );
+    try {
+      const response = await axiosInstance.get<IRequests[]>(
+        RequestsEndpoints.LIST
+      );
 
-    return response.data;
+      return response.data;
+    } catch (error) {
+      console.log("Erro ao listar pedidos", error);
+      return [];
+    }
+  }
+
+  async create(payload: IRequests) {
+    try {
+      const response = await axiosInstance.post(
+        RequestsEndpoints.CREATE,
+        payload
+      );
+
+      return response;
+    } catch (error) {
+      console.log("Erro ao listar pedidos", error);
+      return "Error";
+    }
   }
 }
 

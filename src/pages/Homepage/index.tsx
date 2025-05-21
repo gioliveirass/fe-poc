@@ -1,15 +1,15 @@
 import IRequests from "../../interfaces/requests.interface";
 import RequestsTable from "../../components/RequestsTable";
+import requestsApi from "../../services/requests/requests";
 import Button from "../../components/Button";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { ERouter } from "../../router";
-import requestsApi from "../../services/requests/requests";
+import { IRouter } from "../../router";
 
 const Homepage = () => {
   const navigate = useNavigate();
 
-  const navigateTo = (route: ERouter): void => {
+  const navigateTo = (route: IRouter): void => {
     navigate(route);
   };
 
@@ -31,7 +31,7 @@ const Homepage = () => {
         label="Cadastrar pedido"
         styleType="light"
         onClick={() => {
-          navigateTo(ERouter.CREATE);
+          navigateTo(IRouter.CREATE);
         }}
       />
     </div>

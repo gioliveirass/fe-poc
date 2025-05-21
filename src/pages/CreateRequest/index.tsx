@@ -1,31 +1,60 @@
 import Button from "../../components/Button";
+import requestsApi from "../../services/requests/requests";
+import IRequests from "../../interfaces/requests.interface";
 import React, { useState } from "react";
+import { v4 } from "uuid";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
-import { ERouter } from "../../router";
+import { IRouter } from "../../router";
 
 const CreateRequest = () => {
   const navigate = useNavigate();
 
-  const [client, setClient] = useState<string>();
-  const [product, setProduct] = useState<string>();
+  const [client, setClient] = useState<string>("");
+  const [product, setProduct] = useState<string>("");
   const [status, setStatus] = useState("Pendente");
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>("");
 
-  const navigateTo = (route: ERouter): void => {
+  const navigateTo = (route: IRouter): void => {
     navigate(route);
   };
 
-  const createRequest = () => {
-    const payload = {
+  const createRequest = async () => {
+    const payload: IRequests = {
       client,
       product,
-      status,
-      value,
+      status: status as "Pendente" | "Processando" | "Finalizado",
+      value: parseInt(value),
+      createdAt: new Date(),
+      id: v4(),
     };
+
+    const response = await requestsApi.create(payload);
+
+    if (response !== "Error") {
+      toast.success("Pedido cadastrado com sucesso!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      navigateTo(IRouter.HOMEPAGE);
+    }
   };
 
   return (
-    <form className="max-w-sm mx-auto flex flex-col gap-5">
+    <form
+      className="max-w-sm mx-auto flex flex-col gap-5"
+      onSubmit={(event) => {
+        event.preventDefault();
+        createRequest();
+      }}
+    >
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           Cliente
@@ -96,7 +125,7 @@ const CreateRequest = () => {
           label="Cancelar"
           styleType="red"
           onClick={() => {
-            navigateTo(ERouter.HOMEPAGE);
+            navigateTo(IRouter.HOMEPAGE);
           }}
         />
         <Button label="Cadastrar" styleType="default" type="submit" />
