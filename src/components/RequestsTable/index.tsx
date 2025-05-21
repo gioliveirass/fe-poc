@@ -1,10 +1,15 @@
 import IRequests from "../../interfaces/requests.interface";
+import { useNavigate } from "react-router";
+import { IRouter } from "../../router";
+import { GoEye } from "react-icons/go";
 
 interface IRequestsTable {
   requests: IRequests[];
 }
 
 const RequestsTable = ({ requests }: IRequestsTable) => {
+  const navigate = useNavigate();
+
   const columns: string[] = [
     "ID",
     "Data de Criação",
@@ -12,6 +17,7 @@ const RequestsTable = ({ requests }: IRequestsTable) => {
     "Produto",
     "Status",
     "Valor",
+    "Ações",
   ];
 
   return (
@@ -42,6 +48,16 @@ const RequestsTable = ({ requests }: IRequestsTable) => {
               <td className="px-6 py-4">{request.product}</td>
               <td className="px-6 py-4">{request.status}</td>
               <td className="px-6 py-4">{request.value}</td>
+              <td className="px-6 py-4">
+                <span
+                  className="cursor-pointer"
+                  onClick={() => {
+                    navigate(IRouter.DETAIL + `/${request.id}`);
+                  }}
+                >
+                  <GoEye />
+                </span>
+              </td>
             </tr>
           ))}
         </tbody>

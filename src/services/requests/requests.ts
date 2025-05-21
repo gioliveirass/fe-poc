@@ -2,6 +2,7 @@ import axiosInstance from "../../api/api";
 import IRequests from "../../interfaces/requests.interface";
 
 export enum RequestsEndpoints {
+  SEARCH = "/Orders",
   LIST = "/Orders",
   CREATE = "/Orders",
 }
@@ -31,6 +32,19 @@ class Requests {
     } catch (error) {
       console.log("Erro ao listar pedidos", error);
       return "Error";
+    }
+  }
+
+  async searchById(id: string) {
+    try {
+      const response = await axiosInstance.get<IRequests>(
+        RequestsEndpoints.SEARCH + `/${id}`
+      );
+
+      return response.data;
+    } catch (error) {
+      console.log("Não foi possível encontrar pedido!", error);
+      return null;
     }
   }
 }
